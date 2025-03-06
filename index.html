@@ -9,18 +9,29 @@
         body { font-family: 'Poppins', sans-serif; text-align: center; margin: 0; padding: 0; }
         .container { max-width: 800px; margin: auto; padding: 20px; }
         .hidden { display: none; }
-        .product { border: 1px solid #ddd; padding: 15px; margin: 10px; cursor: pointer; font-weight: 600; }
-        .back { margin: 20px; cursor: pointer; color: blue; text-decoration: underline; font-weight: 400; }
         .banner { background-color: #0073e6; color: white; padding: 20px; font-size: 24px; font-weight: 600; }
-        .product img { width: 150px; display: block; margin: 10px auto; }
-        .button { background-color: #0073e6; color: white; padding: 10px 15px; border: none; cursor: pointer; font-size: 16px; margin-top: 10px; }
+        .iphone-banner { background-color: #f8f9fa; color: black; padding: 20px; font-size: 20px; font-weight: 600; margin-top: 10px; }
+        .scroll-container { display: flex; overflow-x: auto; padding: 20px; gap: 15px; white-space: nowrap; }
+        .product { flex: 0 0 auto; width: 200px; border: 1px solid #ddd; padding: 15px; border-radius: 10px; text-align: center; background: #fff; box-shadow: 2px 2px 10px rgba(0,0,0,0.1); cursor: pointer; }
+        .product img { width: 100%; border-radius: 10px; }
+        .button { background-color: #0073e6; color: white; padding: 10px 15px; border: none; cursor: pointer; font-size: 16px; margin-top: 10px; border-radius: 5px; }
+        .product-details { display: flex; flex-direction: column; align-items: center; }
+        .product-details img { width: 250px; }
+        .back-button { background-color: #ccc; color: black; padding: 10px 15px; border: none; cursor: pointer; font-size: 16px; margin-top: 20px; border-radius: 5px; }
     </style>
     <script>
-        function showPage(pageId) {
-            document.querySelectorAll('.page').forEach(page => page.classList.add('hidden'));
-            document.getElementById(pageId).classList.remove('hidden');
+        function showProductDetails(phone) {
+            document.getElementById("productList").style.display = "none";
+            document.getElementById("productDetails").style.display = "block";
+            document.getElementById("productName").innerText = phone.name;
+            document.getElementById("productImage").src = phone.image;
         }
-        
+
+        function goBack() {
+            document.getElementById("productList").style.display = "block";
+            document.getElementById("productDetails").style.display = "none";
+        }
+
         function addToCart(phone) {
             alert(phone + " is out of stock. Payment failed.");
         }
@@ -28,44 +39,60 @@
 </head>
 <body>
     <div class="banner">Welcome to B Wireless - Your Next Phone Awaits!</div>
-    <div id="home" class="page container">
+    <div class="iphone-banner">Get ready for the all-new iPhone 16 lineup – available now on contract!</div>
+    <div class="container" id="productList">
         <h1>Choose your next phone on a 2-year contract:</h1>
-        <div class="product" onclick="showPage('tudify')">
-            <img src="tudify_phone4.jpg" alt="Tudify Phone 4">
-            Tudify Phone 4
-        </div>
-        <div class="product" onclick="showPage('samsung')">
-            <img src="samsung_s25_ultra.jpg" alt="Samsung S25 Ultra">
-            Samsung S25 Ultra
-        </div>
-        <div class="product" onclick="showPage('iphone')">
-            <img src="iphone_16_pro.jpg" alt="iPhone 16 Pro">
-            iPhone 16 Pro
+        <div class="scroll-container">
+            <div class="product" onclick="showProductDetails({name: 'Tudify Phone 4', image: 'tudify_phone4.jpg'})">
+                <img src="tudify_phone4.jpg" alt="Tudify Phone 4">
+                <p>Tudify Phone 4</p>
+            </div>
+            <div class="product" onclick="showProductDetails({name: 'Tudify Phone 4 Pro', image: 'tudify_phone4_pro.jpg'})">
+                <img src="tudify_phone4_pro.jpg" alt="Tudify Phone 4 Pro">
+                <p>Tudify Phone 4 Pro</p>
+            </div>
+            <div class="product" onclick="showProductDetails({name: 'Samsung S25 Ultra', image: 'samsung_s25_ultra.jpg'})">
+                <img src="samsung_s25_ultra.jpg" alt="Samsung S25 Ultra">
+                <p>Samsung S25 Ultra</p>
+            </div>
+            <div class="product" onclick="showProductDetails({name: 'Samsung S25', image: 'samsung_s25.jpg'})">
+                <img src="samsung_s25.jpg" alt="Samsung S25">
+                <p>Samsung S25</p>
+            </div>
+            <div class="product" onclick="showProductDetails({name: 'Samsung S25+', image: 'samsung_s25_plus.jpg'})">
+                <img src="samsung_s25_plus.jpg" alt="Samsung S25+">
+                <p>Samsung S25+</p>
+            </div>
+            <div class="product" onclick="showProductDetails({name: 'iPhone 16', image: 'iphone_16.jpg'})">
+                <img src="iphone_16.jpg" alt="iPhone 16">
+                <p>iPhone 16</p>
+            </div>
+            <div class="product" onclick="showProductDetails({name: 'iPhone 16 Plus', image: 'iphone_16_plus.jpg'})">
+                <img src="iphone_16_plus.jpg" alt="iPhone 16 Plus">
+                <p>iPhone 16 Plus</p>
+            </div>
+            <div class="product" onclick="showProductDetails({name: 'iPhone 16E', image: 'iphone_16e.jpg'})">
+                <img src="iphone_16e.jpg" alt="iPhone 16E">
+                <p>iPhone 16E</p>
+            </div>
+            <div class="product" onclick="showProductDetails({name: 'iPhone 16 Pro', image: 'iphone_16_pro.jpg'})">
+                <img src="iphone_16_pro.jpg" alt="iPhone 16 Pro">
+                <p>iPhone 16 Pro</p>
+            </div>
+            <div class="product" onclick="showProductDetails({name: 'iPhone 16 Pro Max', image: 'iphone_16_pro_max.jpg'})">
+                <img src="iphone_16_pro_max.jpg" alt="iPhone 16 Pro Max">
+                <p>iPhone 16 Pro Max</p>
+            </div>
         </div>
     </div>
-    
-    <div id="tudify" class="page container hidden">
-        <h2>Tudify Phone 4</h2>
-        <img src="tudify_phone4.jpg" alt="Tudify Phone 4">
-        <p>Experience next-gen technology with the Tudify Phone 4.</p>
-        <button class="button" onclick="addToCart('Tudify Phone 4')">Buy Now</button>
-        <div class="back" onclick="showPage('home')">Back to Home</div>
-    </div>
-    
-    <div id="samsung" class="page container hidden">
-        <h2>Samsung S25 Ultra</h2>
-        <img src="samsung_s25_ultra.jpg" alt="Samsung S25 Ultra">
-        <p>The ultimate Android experience with the Samsung S25 Ultra.</p>
-        <button class="button" onclick="addToCart('Samsung S25 Ultra')">Buy Now</button>
-        <div class="back" onclick="showPage('home')">Back to Home</div>
-    </div>
-    
-    <div id="iphone" class="page container hidden">
-        <h2>iPhone 16 Pro</h2>
-        <img src="iphone_16_pro.jpg" alt="iPhone 16 Pro">
-        <p>Apple's latest flagship device with cutting-edge features.</p>
-        <button class="button" onclick="addToCart('iPhone 16 Pro')">Buy Now</button>
-        <div class="back" onclick="showPage('home')">Back to Home</div>
+
+    <div class="container hidden" id="productDetails">
+        <div class="product-details">
+            <h1 id="productName"></h1>
+            <img id="productImage" src="" alt="Product Image">
+            <button class="button" onclick="addToCart(document.getElementById('productName').innerText)">Buy Now</button>
+            <button class="back-button" onclick="goBack()">Back to Products</button>
+        </div>
     </div>
 </body>
 </html>
