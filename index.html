@@ -1,0 +1,49 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>B Wireless</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+        body { font-family: 'Poppins', sans-serif; text-align: center; }
+        .container { max-width: 800px; margin: auto; padding: 20px; }
+        .hidden { display: none; }
+        .product { border: 1px solid #ddd; padding: 15px; margin: 10px; cursor: pointer; font-weight: 600; }
+        .back { margin: 20px; cursor: pointer; color: blue; text-decoration: underline; font-weight: 400; }
+    </style>
+    <script>
+        function showPage(pageId) {
+            document.querySelectorAll('.page').forEach(page => page.classList.add('hidden'));
+            document.getElementById(pageId).classList.remove('hidden');
+        }
+    </script>
+</head>
+<body>
+    <div id="home" class="page container">
+        <h1>Welcome to B Wireless</h1>
+        <p>Choose your next phone on a 2-year contract:</p>
+        <div class="product" onclick="showPage('tudify')">Tudify Phone 4</div>
+        <div class="product" onclick="showPage('samsung')">Samsung S25 Ultra</div>
+        <div class="product" onclick="showPage('iphone')">iPhone 16 Pro</div>
+    </div>
+    
+    <div id="tudify" class="page container hidden">
+        <h2>Tudify Phone 4</h2>
+        <p>Experience next-gen technology with the Tudify Phone 4.</p>
+        <div class="back" onclick="showPage('home')">Back to Home</div>
+    </div>
+    
+    <div id="samsung" class="page container hidden">
+        <h2>Samsung S25 Ultra</h2>
+        <p>The ultimate Android experience with the Samsung S25 Ultra.</p>
+        <div class="back" onclick="showPage('home')">Back to Home</div>
+    </div>
+    
+    <div id="iphone" class="page container hidden">
+        <h2>iPhone 16 Pro</h2>
+        <p>Apple's latest flagship device with cutting-edge features.</p>
+        <div class="back" onclick="showPage('home')">Back to Home</div>
+    </div>
+</body>
+</html>
