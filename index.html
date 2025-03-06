@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,43 +6,65 @@
     <title>B Wireless</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
-        body { font-family: 'Poppins', sans-serif; text-align: center; }
+        body { font-family: 'Poppins', sans-serif; text-align: center; margin: 0; padding: 0; }
         .container { max-width: 800px; margin: auto; padding: 20px; }
         .hidden { display: none; }
         .product { border: 1px solid #ddd; padding: 15px; margin: 10px; cursor: pointer; font-weight: 600; }
         .back { margin: 20px; cursor: pointer; color: blue; text-decoration: underline; font-weight: 400; }
+        .banner { background-color: #0073e6; color: white; padding: 20px; font-size: 24px; font-weight: 600; }
+        .product img { width: 150px; display: block; margin: 10px auto; }
+        .button { background-color: #0073e6; color: white; padding: 10px 15px; border: none; cursor: pointer; font-size: 16px; margin-top: 10px; }
     </style>
     <script>
         function showPage(pageId) {
             document.querySelectorAll('.page').forEach(page => page.classList.add('hidden'));
             document.getElementById(pageId).classList.remove('hidden');
         }
+        
+        function addToCart(phone) {
+            alert(phone + " is out of stock. Payment failed.");
+        }
     </script>
 </head>
 <body>
+    <div class="banner">Welcome to B Wireless - Your Next Phone Awaits!</div>
     <div id="home" class="page container">
-        <h1>Welcome to B Wireless</h1>
-        <p>Choose your next phone on a 2-year contract:</p>
-        <div class="product" onclick="showPage('tudify')">Tudify Phone 4</div>
-        <div class="product" onclick="showPage('samsung')">Samsung S25 Ultra</div>
-        <div class="product" onclick="showPage('iphone')">iPhone 16 Pro</div>
+        <h1>Choose your next phone on a 2-year contract:</h1>
+        <div class="product" onclick="showPage('tudify')">
+            <img src="tudify_phone4.jpg" alt="Tudify Phone 4">
+            Tudify Phone 4
+        </div>
+        <div class="product" onclick="showPage('samsung')">
+            <img src="samsung_s25_ultra.jpg" alt="Samsung S25 Ultra">
+            Samsung S25 Ultra
+        </div>
+        <div class="product" onclick="showPage('iphone')">
+            <img src="iphone_16_pro.jpg" alt="iPhone 16 Pro">
+            iPhone 16 Pro
+        </div>
     </div>
     
     <div id="tudify" class="page container hidden">
         <h2>Tudify Phone 4</h2>
+        <img src="tudify_phone4.jpg" alt="Tudify Phone 4">
         <p>Experience next-gen technology with the Tudify Phone 4.</p>
+        <button class="button" onclick="addToCart('Tudify Phone 4')">Buy Now</button>
         <div class="back" onclick="showPage('home')">Back to Home</div>
     </div>
     
     <div id="samsung" class="page container hidden">
         <h2>Samsung S25 Ultra</h2>
+        <img src="samsung_s25_ultra.jpg" alt="Samsung S25 Ultra">
         <p>The ultimate Android experience with the Samsung S25 Ultra.</p>
+        <button class="button" onclick="addToCart('Samsung S25 Ultra')">Buy Now</button>
         <div class="back" onclick="showPage('home')">Back to Home</div>
     </div>
     
     <div id="iphone" class="page container hidden">
         <h2>iPhone 16 Pro</h2>
+        <img src="iphone_16_pro.jpg" alt="iPhone 16 Pro">
         <p>Apple's latest flagship device with cutting-edge features.</p>
+        <button class="button" onclick="addToCart('iPhone 16 Pro')">Buy Now</button>
         <div class="back" onclick="showPage('home')">Back to Home</div>
     </div>
 </body>
